@@ -1,0 +1,36 @@
+﻿
+@page "/counter/{id}"
+@page "/counter"
+
+@inject NavigationManager nm
+
+<PageTitle>Index Page</PageTitle>
+
+
+<input type="text" placeholder="Enter Your Name" @bind="modelStudent.FirstName" />
+<input type="text" placeholder="Enter Your Id" @bind="modelStudent.StuId" />
+<input type="text" placeholder="Enter your Email Address" @bind="modelStudent.EmailAddress" />
+
+<button type="button" @onclick="UpdateStudent">Update</button>
+<button type="button" @onclick="SaveStudent">Save</button>
+
+@code {
+    [Parameter] public string? id { get; set; }
+    ModelStudent modelStudent { get; set; } = new ModelStudent();
+
+
+    private void SaveStudent()
+    {
+        DalStudent.SaveStudentInformation(modelStudent);
+        nm.NavigateTo("ShowData");
+    }
+    private void UpdateStudent()
+    {
+       
+        DalStudent.UpdateStudentInformation(modelStudent);
+        nm.NavigateTo("ShowData");
+
+    }
+}
+
+
