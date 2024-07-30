@@ -1,9 +1,9 @@
 ﻿@page "/showdata"
+
+
 <h3> Show Data</h3>
-
-
+    <div class="content">
 <table class="table">
-
      @foreach (var item in listStudents)
        {
          <tr>
@@ -19,7 +19,10 @@
          </tr>
        }
 </table>
+    </div>
 @code {
+
+    
     List<ModelStudent> listStudents { get; set; } = new List<ModelStudent>();
 
     protected override void OnInitialized() 
@@ -44,3 +47,24 @@
 }
 }
 
+    <style>
+       
+          h3{
+              text-align:center;
+              display: flex;
+         align-items:center;
+         justify-content:center;
+          }
+       .content{
+       
+           color: blue;
+          
+           text-align: center;
+           width: 100vh;
+         display: block;
+         align-items:center;
+         justify-content:center;
+       }
+       
+
+    </style>
